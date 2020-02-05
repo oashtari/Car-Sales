@@ -23,8 +23,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { //action goes in here?
-
-  }
+  {}
 )(Header);
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const Total = props => {
   return (
     <div className="content">
-      <h4>Total Amount: ${props.totalPrice + props.additionalPrice}</h4>
+      <h4>Total Price: ${props.totalPrice + props.additionalPrice}</h4>
     </div>
   );
 };
@@ -18,7 +18,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { //action goes in here?
-
-  }
+  {}
 )(Total);

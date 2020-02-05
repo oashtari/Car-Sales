@@ -18,30 +18,42 @@ export const initialState = {
 };
 
 export const carReducer = (store = initialState, action) => {
-    // console.log('testing reducer store and action in main reducer file', store.car, action)
     switch (action.type) {
 
         case ADD_FEATURE:
+            // console.log(action.payload)
             return {
                 ...store,
                 additionalPrice: store.additionalPrice + action.payload.price,
                 car: {
                     ...store.car,
                     features: [...store.car.features, action.payload]
-                }
+                },
+                additionalFeatures: store.additionalFeatures.filter(feature => {
+                    return feature.id !== action.payload.id
+                })
             };
 
 
         case REMOVE_FEATURE:
-            console.log('testing REMOVE_FEATURE', store)
+            console.log('testing REVMOE FEATURE', action.payload)
             return {
-                ...store
+                ...store,
+                additionalPrice: store.additionalPrice - action.payload.price,
+                car: {
+                    ...store.car,
+                    features: store.car.features.filter(feature => {
+                        return feature.id !== action.payload.id
+                    })
+                },
+                additionalFeatures: [...store.additionalFeatures, action.payload]
             };
 
         default:
             return store;
     }
 }
+
 
 // both need to affect price
 // both need to change additional features list
