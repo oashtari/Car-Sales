@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import AddedFeature from './AddedFeature';
 
+import { removeFeature } from '../actions';
+
 const AddedFeatures = props => {
   return (
     <div className="content">
@@ -28,7 +30,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { //action goes in here?
-
-  }
+  { removeFeature }
 )(AddedFeatures);

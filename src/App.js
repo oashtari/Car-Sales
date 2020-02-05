@@ -23,7 +23,7 @@ const App = () => {
       </div>
       <div className="box">
         <AdditionalFeatures />
-        {/* <Total car={state.car} additionalPrice={state.additionalPrice} /> */}
+        <Total />
       </div>
     </div>
   );
@@ -32,6 +32,8 @@ const App = () => {
 export default App;
 
 
+
 // car={state.car}
 // car={state.car}
 // additionalFeatures={state.additionalFeatures}
+// car={state.car} additionalPrice={state.additionalPrice} 
