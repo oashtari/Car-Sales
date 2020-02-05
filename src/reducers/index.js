@@ -7,7 +7,7 @@ export const initialState = {
         name: '2019 Ford Mustang',
         image:
             'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-        features: [{ name: 'test' }]
+        features: []
     },
     additionalFeatures: [
         { id: 1, name: 'V-6 engine', price: 1500 },
@@ -17,34 +17,33 @@ export const initialState = {
     ]
 };
 
-export const carReducer = (state = initialState, action) => {
-    // console.log('testing reducer state and action in main reducer file', state.car, action)
+export const carReducer = (store = initialState, action) => {
+    // console.log('testing reducer store and action in main reducer file', store.car, action)
     switch (action.type) {
+
         case ADD_FEATURE:
-            console.log('testing ADD_FEATURE', state)
             return {
-                ...state,
+                ...store,
+                additionalPrice: store.additionalPrice + action.payload.price,
                 car: {
-                    ...state.car,
-                    features: [...state.car.features, action.payload.name]
+                    ...store.car,
+                    features: [...store.car.features, action.payload]
                 }
-            }
+            };
+
+
+        case REMOVE_FEATURE:
+            console.log('testing REMOVE_FEATURE', store)
+            return {
+                ...store
+            };
 
         default:
-            return state;
+            return store;
     }
 }
 
-// return { ...state, items: [...state.items, action.payload] };
-
-
-
-                // ...state.car,
-                // features: [...state.car.features, action.payload.name]
-
-
-                // ...state,
-
-                // return {
-                //     ...car.features,
-                //     features: [...state.car.features, action.payload.name]
+// both need to affect price
+// both need to change additional features list
+// both need to change added features list
+// remove needs a 'remove' button -- already included as an 'X'
